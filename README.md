@@ -1,1 +1,1 @@
-# psikolog-ornek
+# ornek-psikolog-1
