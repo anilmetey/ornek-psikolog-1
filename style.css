@@ -199,3 +199,18 @@ body, html {
     right: 10px; /* Bring it inside so it's not cut off */
   }
 }
+
+@media (max-width: 740px) {
+  .hero-grid {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .hero-note, .orbiting-note, .portrait-side-note {
+    display: none !important;
+  }
+  /* Optional: Adjust portrait margins slightly for top placement */
+  .hero-visual {
+    padding-bottom: 20px;
+    margin-top: 10px;
+  }
+}
