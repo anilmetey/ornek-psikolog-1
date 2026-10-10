@@ -6,7 +6,7 @@ function createIlaydaSculpture(T, mode) {
   const glass = new T.MeshPhysicalMaterial({
     color: mode === 'breath' ? '#dac8a8' : mode === 'service' ? '#e0d8cb' : '#d5cab8',
     metalness: mode === 'service' ? .26 : .12,
-    roughness: .115, transmission: mode === 'service' ? .22 : .48,
+    roughness: .115, transmission: window.innerWidth < 740 ? 0 : (mode === 'service' ? .22 : .48), transparent: true, opacity: 0.9,
     thickness: 1.2, ior: 1.4, clearcoat: 1, clearcoatRoughness: .04,
     envMapIntensity: 2.1, attenuationColor: new T.Color('#c8baab'), attenuationDistance: 4
   });
@@ -76,7 +76,7 @@ if (typeof module !== 'undefined' && module.exports) {
     let renderer;
     try {
       renderer = new T.WebGLRenderer({ canvas, antialias: window.innerWidth > 740, alpha: true, powerPreference: 'low-power' });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 740 ? 1 : 1.4));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 740 ? 0.4 : 1.4));
       renderer.outputColorSpace = T.SRGBColorSpace; renderer.toneMapping = T.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.25;
       const scene = new T.Scene();
       scene.background = new T.Color(mode === 'service' || mode === 'breath' ? '#201b17' : '#f2eee9');
@@ -262,6 +262,6 @@ if (typeof module !== 'undefined' && module.exports) {
   document.addEventListener('visibilitychange', () => { if (document.hidden) { cancelAnimationFrame(raf); raf = 0; } else start(); });
   window.addEventListener('pagehide', () => { cancelAnimationFrame(raf); raf = 0; });
   window.addEventListener('pageshow', start);
-   createScene('service-gl', 'service'); createScene('breath-gl', 'breath'); start();
+   createScene('breath-gl', 'breath'); start();
 })();
 }
