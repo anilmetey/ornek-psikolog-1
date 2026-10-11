@@ -71,12 +71,12 @@ if (typeof module !== 'undefined' && module.exports) {
   }
 
   function createScene(id, mode) {
-    if (!window.THREE) return;
+    if (!window.THREE || window.innerWidth <= 768) return;
     const T = window.THREE, canvas = document.getElementById(id), root = canvas.parentElement;
     let renderer;
     try {
-      renderer = new T.WebGLRenderer({ canvas, antialias: window.innerWidth > 740, alpha: true, powerPreference: 'low-power' });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 740 ? 0.4 : 1.4));
+      renderer = new T.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'low-power' });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
       renderer.outputColorSpace = T.SRGBColorSpace; renderer.toneMapping = T.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.25;
       const scene = new T.Scene();
       scene.background = new T.Color(mode === 'service' || mode === 'breath' ? '#201b17' : '#f2eee9');
@@ -262,6 +262,6 @@ if (typeof module !== 'undefined' && module.exports) {
   document.addEventListener('visibilitychange', () => { if (document.hidden) { cancelAnimationFrame(raf); raf = 0; } else start(); });
   window.addEventListener('pagehide', () => { cancelAnimationFrame(raf); raf = 0; });
   window.addEventListener('pageshow', start);
-   createScene('breath-gl', 'breath'); start();
+  if (window.innerWidth > 768) { createScene('breath-gl', 'breath'); start(); }
 })();
 }

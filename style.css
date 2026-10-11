@@ -165,85 +165,191 @@ body::before {
   }
 }
 
-/* FAINT PORTRAIT BACKGROUND */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-image: url('assets/portrait-hero.webp');
-  background-position: calc(50% + 300px) center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.05;
-  z-index: -1;
-  pointer-events: none;
-  mix-blend-mode: multiply; filter: grayscale(100%);
-}
-@media (max-width: 740px) {
-  body::before {
-    background-position: center;
-    background-size: 150%;
-    opacity: 0.03;
-  }
-}
-
 /* Fix mobile overflow */
 body, html {
   overflow-x: hidden;
 }
-@media (max-width: 768px) {
-  .portrait-side-note {
-    right: 10px; /* Bring it inside so it's not cut off */
-  }
-}
 
 @media (max-width: 740px) {
+  /* Hero layout: image first, clean presentation */
   .hero-grid {
     display: flex;
     flex-direction: column-reverse;
+    gap: 25px !important;
+    padding-top: 10px !important;
+    padding-bottom: 20px !important;
   }
   .hero-note, .orbiting-note, .portrait-side-note {
     display: none !important;
   }
-  /* Optional: Adjust portrait margins slightly for top placement */
   .hero-visual {
-    padding-bottom: 20px;
-    margin-top: 10px;
+    padding-bottom: 10px !important;
+    margin: 0 auto !important;
+    max-width: 320px !important;
   }
-}
-
-@media (max-width: 740px) {
-  .about-copy h2 {
-    font-size: 42px !important;
-    margin-bottom: 15px !important;
+  .hero h1 {
+    font-size: clamp(48px, 11vw, 68px) !important;
+    margin-bottom: 16px !important;
   }
-}
+  .hero-description {
+    font-size: 13px !important;
+    margin-bottom: 16px !important;
+  }
+  .hero-actions {
+    margin-top: 18px !important;
+    gap: 16px !important;
+  }
 
-@media (max-width: 740px) {
+  /* Compact section vertical spacing */
   .section-space {
-    padding: 45px 0 !important;
+    padding: 30px 0 !important;
   }
   .about {
+    padding-top: 25px !important;
+    padding-bottom: 10px !important;
+  }
+  .about-copy h2 {
+    font-size: 38px !important;
+    margin-bottom: 12px !important;
+  }
+  .about-grid {
+    gap: 25px !important;
+  }
+  .about-visual {
+    margin-bottom: 10px !important;
+  }
+  .education {
+    margin: 16px 0 !important;
+  }
+
+  /* Process section spacing */
+  .process {
+    padding-top: 10px !important;
+    padding-bottom: 25px !important;
+  }
+  .section-heading {
+    margin-bottom: 16px !important;
+    gap: 10px !important;
+  }
+  .eyebrow {
+    margin-bottom: 10px !important;
+  }
+  #process-title, .process h2 {
+    font-size: 36px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 8px !important;
+  }
+  .process-steps {
+    padding-top: 5px !important;
+    gap: 14px !important;
     padding-bottom: 20px !important;
   }
-  .process {
+  .process-step {
+    padding: 20px 18px 22px 70px !important;
+    min-height: auto !important;
+  }
+  .step-number {
+    left: 16px !important;
+    top: 18px !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 18px !important;
+  }
+  .process-step h3 {
+    font-size: 24px !important;
+    margin-top: 4px !important;
+    margin-bottom: 6px !important;
+  }
+  .process-step p {
+    font-size: 12.5px !important;
+    line-height: 1.6 !important;
+  }
+  .process-note {
+    margin-top: 16px !important;
+    padding-top: 14px !important;
+  }
+
+  /* Breath section mobile optimizations: clean, lag-free */
+  .breath-section {
+    padding: 15px 0 !important;
+  }
+  .breath-panel {
+    padding: 28px 18px 25px !important;
+    gap: 15px !important;
+  }
+  .breath-copy h2 {
+    font-size: 36px !important;
+    margin-bottom: 10px !important;
+  }
+  .breath-experience {
+    height: 330px !important;
+  }
+  .breath-orb {
+    top: 50px !important;
+    width: 146px !important;
+    height: 146px !important;
+    left: calc(50% - 73px) !important;
+  }
+  .breath-progress-svg {
+    width: 260px !important;
+    height: 260px !important;
+    top: -5px !important;
+  }
+  .breath-orbits {
+    width: 230px !important;
+    height: 230px !important;
+    top: 10px !important;
+  }
+  .breath-instruction {
+    top: 240px !important;
+    font-size: 22px !important;
+  }
+  .breath-counter {
+    top: 282px !important;
+  }
+
+  /* Gallery spacing */
+  .gallery {
     padding-top: 20px !important;
+    padding-bottom: 20px !important;
   }
-}
+  .gallery-heading {
+    margin-bottom: 20px !important;
+  }
 
-@media (max-width: 740px) {
+  /* FAQ spacing */
+  .faq {
+    padding-top: 15px !important;
+    padding-bottom: 20px !important;
+  }
   .faq-heading h2 {
-    font-size: 42px !important;
-    margin-bottom: 15px !important;
+    font-size: 38px !important;
+    margin-bottom: 10px !important;
   }
-}
+  .faq-grid {
+    gap: 20px !important;
+  }
 
-@media (max-width: 740px) {
+  /* Contact spacing */
+  .contact {
+    padding-top: 15px !important;
+    padding-bottom: 30px !important;
+  }
   .contact-copy h2 {
-    font-size: 44px !important;
-    margin-bottom: 18px !important;
+    font-size: 38px !important;
+    margin-bottom: 12px !important;
+  }
+  .contact-grid {
+    gap: 22px !important;
+  }
+
+  /* Fix invisible em text on iOS WebKit */
+  h2 em, .hero-line em, .splash p em {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: var(--gold) !important;
+    color: var(--gold) !important;
+    display: inline !important;
+    opacity: 1 !important;
   }
 }
