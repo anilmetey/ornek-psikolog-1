@@ -216,7 +216,10 @@ body, html {
     gap: 25px !important;
   }
   .about-visual {
-    margin-bottom: 10px !important;
+    margin-bottom: 24px !important;
+  }
+  .about-photo-note {
+    display: none !important;
   }
   .education {
     margin: 16px 0 !important;
